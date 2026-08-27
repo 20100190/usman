@@ -38,6 +38,14 @@ jobs:
       - name: Build website
         run: npm run build
 
+      # Vinext emits prefixed assets inside dist/client/usman, while GitHub
+      # Pages already mounts this artifact at /usman. Flatten the assets so
+      # requests to /usman/_next/... resolve to artifact-root/_next/....
+      - name: Prepare GitHub Pages artifact
+        run: |
+          mv dist/client/usman/_next dist/client/_next
+          rmdir dist/client/usman
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
