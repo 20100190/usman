@@ -138,6 +138,8 @@ export default function Home() {
           <div className="hero-actions"><a href="#experience">Experience ↓</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↗</a></div>
         </div>
         <div className="hero-portrait">
+          {/* A relative native image URL works locally and under the /usman GitHub Pages path. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="./usman-image.jpg" alt="Muhammad Usman" width="600" height="600" fetchPriority="high" />
         </div>
       </header>
@@ -178,7 +180,7 @@ export default function Home() {
         <div className="section-label"><span>05</span> Education</div>
         <div className="education-grid">
           <article><time>Expected Jun 2027</time><h3>MSc Information and Communication Technology</h3><p>FAU Erlangen-Nürnberg · Germany</p></article>
-          <article><time>2016 — 2020</time><h3>BS Electrical Engineering & Computer Science</h3><p>LUMS · Pakistan . Dean's Honour List · 3 years</p></article>
+          <article><time>2016 — 2020</time><h3>BS Electrical Engineering & Computer Science</h3><p>LUMS · Pakistan · Dean&apos;s Honour List · 3 years</p></article>
         </div>
       </section>
 
