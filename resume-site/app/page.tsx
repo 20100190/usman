@@ -126,7 +126,7 @@ export default function Home() {
     <main id="top">
       <nav className="nav shell" aria-label="Primary navigation">
         <a className="monogram" href="#top">MU<span>/</span>01</a>
-        <div className="nav-links"><a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a></div>
+        <div className="nav-links"><a href="#profile">Intro</a><a href="#experience">Experience</a><a href="#projects">Projects</a></div>
         <a className="nav-cta" href="#contact"><i /> Contact</a>
       </nav>
 
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="hero-actions"><a href="#experience">Experience ↓</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↗</a></div>
         </div>
         <div className="hero-portrait">
-          <img src="./usman-image.jpg" alt="Muhammad Usman" width="600" height="600" />
+          <img src="./usman-image.jpg" alt="Muhammad Usman" width="600" height="600" fetchPriority="high" />
         </div>
       </header>
 
