@@ -5,41 +5,59 @@ import { useEffect, useRef } from 'react';
 const skills = [
   { title: 'Backend & data', items: 'Python, FastAPI, Flask, SQL, MySQL, DuckDB, REST APIs, ETL/ELT' },
   { title: 'AI & machine learning', items: 'LLM agents, RAG, embeddings, FAISS, PyTorch, LightGBM, evaluation' },
-  { title: 'Systems & cloud', items: 'Docker, AWS, GCP Cloud Run, Linux, Git, scheduled jobs, data quality' },
-  { title: 'Product & reporting', items: 'PHP, Laravel, JavaScript, HTML, Power BI, Streamlit, stakeholder delivery' },
+  { title: 'Systems & cloud', items: 'Docker, Airflow, AWS, GCP Cloud Run, Linux, Git, scheduled jobs, data quality' },
+  { title: 'Product & reporting', items: 'PHP, Laravel, JavaScript, HTML, PowerBI, Streamlit, stakeholder delivery' },
 ];
 
 const experience = [
   {
-    period: 'Jan 2024 — Jun 2025',
-    role: 'AGI Developer / Engineer',
+    period: 'Jan 2026 — Aug 2026',
+    role: 'Data & Software Consultant',
+    company: 'TOPC potentia',
+    bullets: [
+        'Tax-provision and accounting application (Flask/MySQL, ~1,000 monthly active users), deployed in Docker on AWS EC2 with SQLAlchemy and Alembic migrations, shipped through GitHub Actions, with correlation IDs and structured logging for tracing production failures.',
+        'Project management and budgeting application, where I built the time-tracking module, added automated alerts on overdue tasks, and layered analysis on top of the time data.',
+    ],
+    tags: ['Docker', 'Flask', 'AWS', 'CI/CD', 'Unit Testing'],
+  },
+  {
+    period: 'Jan 2024 — Aug 2025',
+    role: 'AGI Developer | Data Scientist III',
     company: 'Turing',
     bullets: [
-      'Built and evaluated LLM applications and agent workflows using tool calls, retrieval, structured outputs, and quality-focused evaluation.',
-      'Developed Python services and data workflows, including a Flask-based tax provision application and processing automation.',
-      'Translated ambiguous business requirements into implementable backend and AI systems.',
+        'Built a Python/SQL platform over ~6M FMCSA/DOT carrier records to surface high-value commercial carriers, combining a daily census feed with monthly inspection, violation and crash data in Airflow, gating rebuilds behind per-source watermarks.',
+        'Built a provider-agnostic LLM enrichment layer (LiteLLM, Tavily) that gathers web and document evidence to qualify candidate carriers, with capped fan-out per entity for predictable cost and evidence stored separately from scoring; ranked ~100K high-confidence leads across deterministic, vector-similarity and LLM-judgment strategies.',
+        'Integrated QuickBooks Online into a Laravel/MySQL application so users create accounting records without leaving it: OAuth2 consent flow, persisted refresh-token rotation with proactive refresh.',
+        'Designed the review methodology for a 25-person team, splitting agent evaluation into five dimensions (task definition, gold trajectory, instruction following, user simulation, verifier robustness) so a failure could be attributed to its cause rather than recorded as a generic fail.',
+        'Built an incremental sync pulling ~100K invoices, expenses and chart-of-accounts records from the QuickBooks API into a local analytical database, handling pagination, rate limits, retry with backoff and duplicate-safe upserts, so Power BI reporting queried a database instead of a rate-limited API.',
     ],
-    tags: ['Python', 'LLM agents', 'Flask', 'RAG'],
+    tags: ['Python', 'LLM agents', 'Flask', 'RAG', 'Data Engineering'],
   },
   {
     period: 'Apr 2022 — Dec 2023',
     role: 'Data Scientist',
     company: 'Turing',
     bullets: [
-      'Led and reviewed AI and data engineering work while remaining hands-on with analysis, model evaluation, and workflow design.',
-      'Built production-oriented statistical and ML solutions and supported data pipelines, monitoring, and operational reporting.',
+        'Fine-tuned a BERT model to embed developer profiles and job requirements, improving the relevance of top-ranked matches; deployed with FastAPI and Docker.',
+        'Ran A/B tests and experiment analysis with cross-functional teams, validating outcomes with t-tests and ANOVA and translating results into recommendations for product owners; contributed to a 25% lift in product satisfaction.',
+        'Built Power BI financial reporting for client stakeholders covering P&L, balance sheet, inventory aging and payment maturity, owned from source extraction through the relational model to the report logic.',
+        'Handled ad hoc analytical requests from client and internal stakeholders, turning ambiguous questions into defined, measurable metrics before answering them.',
+        'Migrated ~500K time entries, 100K invoices and 100K expenses from Harvest into a custom relational schema, reconstructing relationships the CSV exports omitted via a staging layer, synthetic IDs and dependency-ordered inserts, with per-row source lineage and monthly count and monetary reconciliation before cutover.',
     ],
-    tags: ['Data science', 'ML evaluation', 'Pipelines'],
+    tags: ['Data science', 'ML evaluation', 'Pipelines', 'Data Visualization'],
   },
   {
-    period: 'Jun 2020 — Apr 2022',
+    period: 'Jul 2020 — Apr 2022',
     role: 'Data Scientist',
     company: 'Afiniti',
     bullets: [
-      'Built and deployed propensity models for European accounts with Python and LightGBM, improving the target gain metric by approximately 12%.',
-      'Worked with production datasets and model monitoring across routing performance and data-drift analysis.',
+            'Built XGBoost propensity models driving real-time customer-to-agent pairing in production, improving the target gain metric by 12% and agent utilisation by 25%.',
+            'Account lead across client portfolios worth over $20M, presenting model results and recommendations directly to management and client-side stakeholders.',
+            'Statistically validated predicted against realised performance in live client environments, and monitored deployed models for degradation with root-cause analysis when the two diverged.',
+            'Built interactive Power BI and Tableau dashboards on Dataverse data models, giving stakeholders the reporting they used for day-to-day decisions.',
+            'Optimised reporting pipelines with advanced SQL (window functions, CTEs), cutting query runtime and ensuring accurate KPI reporting.',
     ],
-    tags: ['LightGBM', 'Python', 'Monitoring'],
+    tags: ['LightGBM', 'Python', 'Monitoring', 'Predictive Analysis', 'Data Analysis'],
   },
 ];
 
@@ -50,6 +68,7 @@ const projects = [
     stack: 'Python · SQL · DuckDB · FAISS · LiteLLM',
     summary: 'An incremental, multi-source pipeline operating at multi-million-record scale, with evidence-gathering agents and explainable entity ranking.',
     details: ['Watermarks & set-based upserts', 'Schema-drift logging', 'OpenAI · Claude · Gemini', 'Source provenance'],
+    link: '',
   },
   {
     id: '02',
@@ -57,13 +76,39 @@ const projects = [
     stack: 'PHP/Laravel · MySQL · REST APIs · AWS',
     summary: 'OAuth2-backed financial data syncs and reporting datasets spanning customers, invoices, ledgers, products, and financial summaries.',
     details: ['Token refresh', 'Scheduled syncs', 'AR aging', 'Power BI outputs'],
+    link: '',
+  },
+    {
+    id: '03',
+    title: 'Sports RAG Chatbot',
+    stack: 'Sentence Transformers · FAISS · Mistral 7B · Streamlit',
+    summary: 'Retrieval-augmented Q&A over scraped sports data, running end to end on an 8 GB CPU-only machine.',
+    details: ['Vector retrieval', 'Quantized local model', 'LLM-as-judge evaluation', 'Hugging Face serving'],
+    link: 'https://the-sport-chatbot.streamlit.app/',
   },
   {
-    id: '03',
+    id: '04',
+    title: 'Agent Evaluation Framework & Failure Taxonomy',
+    stack: 'LLM agents · Evaluation design',
+    summary: 'A five-dimension framework for judging tool-using agents, and a taxonomy separating five distinct classes of tool-use hallucination.',
+    details: ['Gold trajectories', 'Verifier robustness', 'User simulation', 'Failure attribution'],
+    link: '',
+  },
+  {
+    id: '05',
+    title: 'Legacy Migration with Lineage & Reconciliation',
+    stack: 'Python · SQL · MySQL',
+    summary: 'Migrated 700K time, invoice and expense records into a new relational schema, reconstructing relationships the source exports omitted.',
+    details: ['Staging & synthetic IDs', 'Dependency-ordered load', 'Per-row source lineage', 'Monthly reconciliation'],
+    link: '',
+  },
+  {
+    id: '06',
     title: 'MindMap Agent Application',
     stack: 'Python · PHP · AI agents',
     summary: 'An agent-based application connecting a PHP interface to a Python backend with multiple coordinated agent types and AI workflows.',
     details: ['Agent orchestration', 'Python backend', 'PHP interface', 'AI workflows'],
+    link: '',
   },
 ];
 
@@ -117,7 +162,8 @@ export default function Home() {
 
       <section className="profile shell section" id="profile">
         <div className="section-label"><span>01</span> Intro</div>
-        <p className="intro">Python-focused engineer and data scientist with experience building production data pipelines, backend applications, AI/LLM workflows, and data-intensive products. Comfortable owning open-ended problems from data ingestion and APIs through deployment and operational reporting. Strong SQL and relational-database background, hands-on cloud and Docker experience, and recent work with LLM agents, retrieval, structured outputs, and evidence-based ranking.</p>
+        <p className="intro">
+        Python-focused engineer and data scientist with experience building production data pipelines, backend applications, AI/LLM workflows, and data-intensive products. Comfortable owning open-ended problems from data ingestion and APIs through deployment and operational reporting. Strong SQL and relational-database background, hands-on cloud and Docker experience, and recent work with LLM agents, retrieval, structured outputs, and evidence-based ranking.</p>
       </section>
 
       <section className="skills shell section" id="skills">
@@ -136,11 +182,11 @@ export default function Home() {
 
       <section className="projects shell section" id="projects">
         <div className="section-label"><span>04</span> Selected projects</div>
-        <div className="project-list">{projects.map((project) => <article className="project" key={project.id}>
+        <div className="project-list">{projects.map((project) => <article className={`project${project.link ? ' has-link' : ''}`} key={project.id}>
           <span className="project-id">{project.id}</span>
-          <div className="project-main"><p className="project-stack">{project.stack}</p><h3>{project.title}</h3><p>{project.summary}</p></div>
+          <div className="project-main"><p className="project-stack">{project.stack}</p><h3>{project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">{project.title}</a> : project.title}</h3><p>{project.summary}</p></div>
           <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-          <span className="project-arrow" aria-hidden="true">↗</span>
+          {project.link ? <a className="project-arrow" href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>↗</a> : null}
         </article>)}</div>
       </section>
 
@@ -148,7 +194,7 @@ export default function Home() {
         <div className="section-label"><span>05</span> Education</div>
         <div className="education-grid">
           <article><time>Expected Jun 2027</time><h3>MSc Information and Communication Technology</h3><p>FAU Erlangen-Nürnberg · Germany</p></article>
-          <article><time>2016 — 2020</time><h3>BS Electrical Engineering</h3><p>LUMS · Pakistan</p></article>
+          <article><time>2016 — 2020</time><h3>BS Electrical Engineering & Computer Science</h3><p>LUMS · Pakistan . Dean's Honour List · 3 years</p></article>
         </div>
       </section>
 
