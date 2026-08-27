@@ -117,8 +117,6 @@ export default function Home() {
     const onMove = (event: PointerEvent) => {
       document.documentElement.style.setProperty('--px', `${(event.clientX / innerWidth - 0.5) * 2}`);
       document.documentElement.style.setProperty('--py', `${(event.clientY / innerHeight - 0.5) * 2}`);
-      document.documentElement.style.setProperty('--mx', `${event.clientX}px`);
-      document.documentElement.style.setProperty('--my', `${event.clientY}px`);
     };
     addEventListener('pointermove', onMove);
     return () => removeEventListener('pointermove', onMove);
