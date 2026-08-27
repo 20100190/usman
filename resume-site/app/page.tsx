@@ -110,7 +110,7 @@ export default function Home() {
           <p className="overline">PYTHON · DATA ENGINEERING · AI/ML · BACKEND SYSTEMS</p>
           <h1>Muhammad <strong className="follow-text" data-text="Usman.">Usman.</strong></h1>
           <div className="hero-meta"><span>Nürnberg, Germany</span><span>MSc ICT, FAU · Expected Jun 2027</span></div>
-          <div className="hero-actions"><a href="#experience">Experience ↓</a><a href="/Usman_AIDAR_CV.docx" download>Download CV ↗</a></div>
+          <div className="hero-actions"><a href="#experience">Experience ↓</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↗</a></div>
         </div>
         <div className="signal signal-a" aria-hidden="true" />
       </header>
@@ -154,7 +154,7 @@ export default function Home() {
 
       <footer id="contact"><div className="shell footer-content">
         <div><p className="overline">CONTACT</p><h2>Muhammad Usman</h2><p>Nürnberg, Germany</p></div>
-        <div className="contact-links"><a href="mailto:Muhammad.usman@fau.de">Muhammad.usman@fau.de ↗</a><a href="https://linkedin.com/in/usman174" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="/Usman_AIDAR_CV.docx" download>Download CV ↓</a></div>
+        <div className="contact-links"><a href="mailto:Muhammad.usman@fau.de">Muhammad.usman@fau.de ↗</a><a href="https://linkedin.com/in/usman174" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↓</a></div>
         <div className="footer-meta"><span>© 2026 Muhammad Usman</span><span>Nürnberg, Germany</span><a href="#top">Back to top ↑</a></div>
       </div></footer>
     </main>

@@ -8,13 +8,14 @@ export const metadata: Metadata = {
     title: 'Muhammad Usman — Data & AI Engineer',
     description: 'From complex data to systems that think.',
     type: 'website',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Muhammad Usman — Data & AI Engineer' }],
+    url: 'https://20100190.github.io/usman/',
+    images: [{ url: 'https://20100190.github.io/usman/og.png', width: 1200, height: 630, alt: 'Muhammad Usman — Data & AI Engineer' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Muhammad Usman — Data & AI Engineer',
     description: 'From complex data to systems that think.',
-    images: ['/og.png'],
+    images: ['https://20100190.github.io/usman/og.png'],
   },
 };
 
