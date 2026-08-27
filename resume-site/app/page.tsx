@@ -137,7 +137,9 @@ export default function Home() {
           <div className="hero-meta"><span>Nürnberg, Germany</span><span>MSc ICT, FAU · Expected Jun 2027</span></div>
           <div className="hero-actions"><a href="#experience">Experience ↓</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↗</a></div>
         </div>
-        <div className="signal signal-a" aria-hidden="true" />
+        <div className="hero-portrait">
+          <img src="./usman-image.jpg" alt="Muhammad Usman" width="600" height="600" />
+        </div>
       </header>
 
       <section className="profile shell section" id="profile">
