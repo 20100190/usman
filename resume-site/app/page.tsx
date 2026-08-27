@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 const skills = [
   { title: 'Backend & data', items: 'Python, FastAPI, Flask, SQL, MySQL, DuckDB, REST APIs, ETL/ELT' },
@@ -113,41 +113,21 @@ const projects = [
 ];
 
 export default function Home() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    let frame = 0;
-    let targetX = innerWidth / 2;
-    let targetY = innerHeight / 2;
-    let x = targetX;
-    let y = targetY;
-
     const onMove = (event: PointerEvent) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
       document.documentElement.style.setProperty('--px', `${(event.clientX / innerWidth - 0.5) * 2}`);
       document.documentElement.style.setProperty('--py', `${(event.clientY / innerHeight - 0.5) * 2}`);
-      cursorRef.current?.classList.add('visible');
-    };
-    const render = () => {
-      x += (targetX - x) * 0.16;
-      y += (targetY - y) * 0.16;
-      if (cursorRef.current) cursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      frame = requestAnimationFrame(render);
     };
     addEventListener('pointermove', onMove);
-    frame = requestAnimationFrame(render);
-    return () => { removeEventListener('pointermove', onMove); cancelAnimationFrame(frame); };
+    return () => removeEventListener('pointermove', onMove);
   }, []);
 
   return (
     <main id="top">
-      <div className="cursor-label" ref={cursorRef} aria-hidden="true">PYTHON · DATA · AI</div>
-
       <nav className="nav shell" aria-label="Primary navigation">
         <a className="monogram" href="#top">MU<span>/</span>01</a>
         <div className="nav-links"><a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a></div>
-        <a className="nav-cta" href="mailto:Muhammad.usman@fau.de"><i /> Contact</a>
+        <a className="nav-cta" href="#contact"><i /> Contact</a>
       </nav>
 
       <header className="hero shell">
@@ -163,7 +143,9 @@ export default function Home() {
       <section className="profile shell section" id="profile">
         <div className="section-label"><span>01</span> Intro</div>
         <p className="intro">
-        Python-focused engineer and data scientist with experience building production data pipelines, backend applications, AI/LLM workflows, and data-intensive products. Comfortable owning open-ended problems from data ingestion and APIs through deployment and operational reporting. Strong SQL and relational-database background, hands-on cloud and Docker experience, and recent work with LLM agents, retrieval, structured outputs, and evidence-based ranking.</p>
+          Data scientist, 5+ years across production ML, analytics and data engineering. I work the whole path: the pipeline that moves the data, the model that uses it, and the reporting people make decisions from. Most of it client-facing, where the constraint is usually not the algorithm but what the data supports and what the stakeholder will trust.
+          Strongest in Python, SQL and Airflow, and comfortable in the backend and API layer that surrounds them. Recent work on LLM and agent systems, including evaluation methodology for tool-using agents.
+        </p>
       </section>
 
       <section className="skills shell section" id="skills">
@@ -200,7 +182,7 @@ export default function Home() {
 
       <footer id="contact"><div className="shell footer-content">
         <div><p className="overline">CONTACT</p><h2>Muhammad Usman</h2><p>Nürnberg, Germany</p></div>
-        <div className="contact-links"><a href="mailto:Muhammad.usman@fau.de">Muhammad.usman@fau.de ↗</a><a href="https://linkedin.com/in/usman174" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↓</a></div>
+        <div className="contact-links"><a href="mailto:Muhammad.usman@fau.de">Muhammad.usman@fau.de ↗</a><a href="https://linkedin.com/in/usman174" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/20100190" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="./Usman_AIDAR_CV.docx" download>Download CV ↓</a></div>
         <div className="footer-meta"><span>© 2026 Muhammad Usman</span><span>Nürnberg, Germany</span><a href="#top">Back to top ↑</a></div>
       </div></footer>
     </main>
